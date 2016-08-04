@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+	<title>Blog</title>
+	
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="./css/prism.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css" media="all">
+	<script src="./js/jquery-2.2.4.min.js" type="text/javascript"></script>
+	<script src="./js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand">F3Earth</a>
+        </div>
+        <nav id="bs-navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="productdoc.html" >项目方案</a>
+                </li>
+                <li>
+                    <a href="equity.html">股东权益</a>
+                </li>
+                <li>
+                    <a href="recruited.html" >项目招募</a>
+                </li>
+                <li>
+                    <a href="about.html" >关于我们</a>
+                </li>
+				 <li>
+                    <a href="Crowdfunding.html" >资金明细</a>
+                </li>
+				 <li>
+                    <a href="Blog.html" >大事件</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container-fluid page-body">
+
+<div class="row filter blog">
+	<div class="col-lg-12">
+		<h3>Categories</h3>
+		<ul class="list-unstyled" id="industries">
+			<li>
+				<a class="no-break" href="" id="blog-all">
+					<span class="fa fa-tags fa-lg"></span> All
+				</a>
+			</li>
+	
+			<li>
+				<a class="no-break" href="" id="blog-news">
+					<span class="fa fa-newspaper-o fa-lg" style="color: #DE4B9D;"></span> News
+				</a>
+			</li>
+			
+			<li>
+				<a class="no-break" href="" id="blog-events">
+					<span class="fa fa-map-marker fa-lg" style="color: #F0AD4E;"></span> Events
+				</a>
+			</li>
+			
+			<li>
+				<a class="no-break" href="" id="blog-development">
+					<span class="fa fa-cogs fa-lg" style="color: #2cc2e9;"></span> Development
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="row row-centered">
+	<div class="col-lg-7 col-centered col-md-8" id="posts">
+
+			<div class="post-preview post-news " style="display: block;">
+
+				<div class="post-header no-decoration">
+					<h4>
+						<a href="" onclick="filter(news);return false;"> <span class="fa fa-cogs fa-lg" style="color: #2cc2e9;"></span> News </a>
+					</h4>
+					<h2><a href="" title="">一个想法，一群人</a></h2>
+					<div class="post-meta no-decoration">
+					<a href="">May 2016</a>
+					</div>
+				</div>
+
+				<div class="post-content">
+					<p>
+						一群小伙伴出于对技术的热爱和追求，萌发了开发一套WebGIS 3D engine的想法，期望以众筹的方式筹集一笔资金用于持久发展.此想法获得许多伙伴们的响应。
+					</p>
+				</div>
+				
+			</div>
+		
+			
+			<div class="post-preview post-events " style="display: block;">
+
+				<div class="post-header no-decoration">
+					<h4>
+						<a href="" onclick="filter(events);return false;"> <span class="fa fa-cogs fa-lg" style="color: #2cc2e9;"></span> Events </a>
+					</h4>
+					<h2><a href="" title="">QQ群，第一次会议</a></h2>
+					<div class="post-meta no-decoration">
+					<a href="">16 May 2016</a>
+					</div>
+				</div>
+				
+				<div class="post-img" style="background-image: url(./images/development/20160624.png);height:500px">
+				</div>
+				
+				<div class="post-content">
+					<p>
+						成立了GIS伙伴群，用于吸引对WebGIS 3D Engine有兴趣的、有意向的伙伴；并召开了第一次网络会议。
+					</p>
+				</div>
+				
+			</div>
+			
+			
+			<div class="post-preview post-events " style="display: block;">
+
+				<div class="post-header no-decoration">
+					<h4>
+						<a href="" onclick="filter(events);return false;"> <span class="fa fa-cogs fa-lg" style="color: #2cc2e9;"></span> Events </a>
+					</h4>
+					<h2><a href="" title="">F3Earth Start</a></h2>
+					<div class="post-meta no-decoration">
+					<a href="">1 July 2016</a>
+					</div>
+				</div>
+				
+				<div class="post-img" style="background-image: url(./images/development/20160701.png);height:500px">
+				</div>
+				
+				<div class="post-content">
+					<p>
+						经过近2个月的前期筹备，WebGIS 3D Engine项目正式启动，项目名称F3Earth。项目启动第一天就收到20多人的众筹资金，募集资金超过1万元。
+					</p>
+				</div>
+				
+			</div>
+			
+			<div class="post-preview post-development " style="display: block;">
+
+				<div class="post-header no-decoration">
+					<h4>
+						<a href="" onclick="filter(development);return false;"> <span class="fa fa-cogs fa-lg" style="color: #2cc2e9;"></span> Development </a>
+					</h4>
+					<h2><a href="" title="">The First Demo of F3Earth</a></h2>
+					<div class="post-meta no-decoration">
+					<a href="">7 July 2016</a>
+					</div>
+				</div>
+				
+				<div class="post-img" style="background-image: url(./images/development/20160707.png);height:600px">
+				</div>
+				
+				<div class="post-content">
+					<p>
+						F3Earth项目在github开源，第一个DEMO发布。
+					</p>
+				</div>
+				
+			</div>
+			
+		<div class="blog-bottom-nav">
+			<div class="row">
+				<div class="col-xs-4 scroll-to-top in-middle no-padding">
+					<a id="scroll-up">
+						<span id="" class="fa fa-chevron-up fa-lg"></span>
+						<div class="block"></div>
+						<span>Scroll to Top</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	$('#tags').hide();
+
+	function filter(tag) {
+		if (tag == 'all') {
+			$('#posts').children('.post-preview').fadeIn('fast');
+		} else {
+			$('#posts').children('.post-preview').hide();
+			$('#posts').children('.post-' + tag).fadeIn('fast');
+		}
+		$('#industries a').removeClass('active');
+		$('#blog-' + tag).addClass('active');
+		window.location.hash = '#' + tag;
+		$('#more-posts').hide();
+	}
+
+	$( document).ready(function() {
+		if (window.location.hash) {
+			filter(window.location.hash.substring(1));
+		} else {
+			$('#posts').children('.post-preview').hide();
+			$('#posts').children('.post-preview').slice(0,15).show();
+		}
+
+		$('[id*="blog-"]').click(function(e) {
+			e.preventDefault();
+			var tag = e.target.id.substring(5);
+			if (tag) {
+				filter(tag);
+			}
+			return false;
+		});
+
+		$('#scroll-up').click(function(){
+			$('html, body').animate({scrollTop : 0},800);
+			return false;
+		});
+	});
+</script>
+</div>
+
+    <script src="./js/prism.js" type="text/javascript"></script>
+	<script src="./js/glsl.js" type="text/javascript"></script>
+    
+</body>
+</html>
