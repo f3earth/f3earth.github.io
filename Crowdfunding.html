@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/patch.css" rel="stylesheet">
+
+    <!-- Documentation extras -->
+
+    <link href="css/docs.min.css" rel="stylesheet">
+    <script src="js/echarts.common.min.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
+
+    <title>F3Earth | Indiegogo</title>
+    <style type="text/css">
+        /* Antenna Font Family Variations */
+        /* Benton Font Family Variations */
+        /** Perk Store mobile header text **/
+        /** Only mobile campaign/contributions **/
+        /* We can define top-left-dimple or left-top-dimple etc as necessary */
+        .campaignBackers {
+            padding-bottom: 10px;
+        }
+
+        .campaignBackers-pledge {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #dddddd;
+            display: box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: -ms-flex;
+            display: flex;
+            box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+            box-pack: justify;
+            -ms-flex-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-justify-content: space-between;
+            -ms-justify-content: space-between;
+            justify-content: space-between;
+        }
+
+        .campaignBackers-pledge:first-child {
+            padding-top: 0;
+        }
+
+        .campaignBackers-pledge-backer {
+            display: box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: -ms-flex;
+            display: flex;
+            box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+        }
+
+        .campaignBackers-pledge-backer-image img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .campaignBackers-pledge-backer-details {
+            margin-left: 10px;
+            box-flex: 1;
+            -webkit-flex: 1;
+            -moz-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+
+        .campaignBackers-pledge-backer-details-text {
+            color: #6a6a6a;
+            font-family: "Benton Sans", "Helvetica", "sans-serif";
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        @media not all and (min-width: 1280px) {
+            .campaignBackers-pledge-backer-details-text {
+                font-family: "Benton Sans", "Helvetica", "sans-serif";
+                font-size: 12px;
+                font-weight: bold;
+                line-height: 18px;
+            }
+        }
+
+        .campaignBackers-pledge-backer-details-text--link {
+            color: #eb1478;
+        }
+
+        .campaignBackers-pledge-backer-details-note {
+            color: #a8a8a8;
+            font-family: "Benton Sans", "Helvetica", "sans-serif";
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+        }
+
+        @media not all and (min-width: 1280px) {
+            .campaignBackers-pledge-backer-details-note {
+                font-family: "Benton Sans", "Helvetica", "sans-serif";
+                font-size: 12px;
+                font-weight: normal;
+                line-height: 18px;
+            }
+        }
+
+        .campaignBackers-pledge-amount {
+            color: #6a6a6a;
+        }
+
+        .campaignBackers-pledge-amount-bold {
+            font-family: "Benton Sans", "Helvetica", "sans-serif";
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 26px;
+            letter-spacing: 0;
+        }
+
+        @media not all and (min-width: 1280px) {
+            .campaignBackers-pledge-amount-bold {
+                font-family: "Benton Sans", "Helvetica", "sans-serif";
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
+
+        .campaignBackers-seeMore {
+            border-bottom: 1px solid #dddddd;
+            text-transform: uppercase;
+            height: 30px;
+            display: box;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: -ms-flex;
+            display: flex;
+            box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            -moz-align-items: center;
+            -ms-align-items: center;
+            align-items: center;
+            box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            -moz-justify-content: center;
+            -ms-justify-content: center;
+            justify-content: center;
+            font-family: "Benton Sans Medium", "Helvetica", "sans-serif";
+            font-size: 14px;
+            line-height: 20px;
+        }
+    </style>
+
+    <style type="text/css">/* Antenna Font Family Variations */
+    /* Benton Font Family Variations */
+    /** Perk Store mobile header text **/
+    /** Only mobile campaign/contributions **/
+    /* We can define top-left-dimple or left-top-dimple etc as necessary */
+
+    .campaignBody-leadSection {
+        min-height: 50vh;
+        display: block;
+        position: relative;
+        float: left;
+        width: 75%;
+        min-height: 1px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    @media (min-width: 768px) {
+        .campaignBody-leadSection {
+            position: relative;
+            min-height: 1px;
+            padding-left: 10px;
+            padding-right: 10px;
+            float: left;
+            width: 58.33333333%;
+        }
+    }
+
+    @media (min-width: 1002px) {
+        .campaignBody-leadSection {
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+            float: left;
+            width: 58.33333333%;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .campaignBody-leadSection {
+            position: relative;
+            min-height: 1px;
+            padding-left: 20px;
+            padding-right: 20px;
+            float: left;
+            width: 58.33333333%;
+        }
+    }
+
+    .campaignBody-finalSection {
+        display: block;
+        position: relative;
+        float: left;
+        width: 25%;
+        min-height: 1px;
+        padding-left: 6px;
+        padding-right: 6px;
+    }
+
+    @media (min-width: 768px) {
+        .campaignBody-finalSection {
+            position: relative;
+            min-height: 1px;
+            padding-left: 10px;
+            padding-right: 10px;
+            float: left;
+            width: 41.66666667%;
+        }
+    }
+
+    @media (min-width: 1002px) {
+        .campaignBody-finalSection {
+            position: relative;
+            min-height: 1px;
+            padding-left: 15px;
+            padding-right: 15px;
+            float: left;
+            width: 33.33333333%;
+        }
+    }
+
+    @media (min-width: 1280px) {
+        .campaignBody-finalSection {
+            position: relative;
+            min-height: 1px;
+            padding-left: 20px;
+            padding-right: 20px;
+            float: left;
+            width: 100%;
+        }
+    }
+
+    .campaignBody-horizontal {
+        display: none;
+    }
+
+    @media (min-width: 768px) {
+        .campaignBody-horizontal {
+            display: block;
+            margin-bottom: 20px;
+        }
+    }
+    </style>
+
+    <style type="text/css">/* Antenna Font Family Variations */
+    /* Benton Font Family Variations */
+    /** Perk Store mobile header text **/
+    /** Only mobile campaign/contributions **/
+    /* We can define top-left-dimple or left-top-dimple etc as necessary */
+    .campaignNextPerk {
+        display: block;
+        box-shadow: 0 0 0 1px #dddddd;
+        position: relative;
+    }
+
+    .campaignNextPerk--unavailable {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    .campaignNextPerk-body {
+        padding: 30px 20px 20px;
+    }
+
+    .campaignNextPerk-amountWithCurrency > * {
+        display: inline-block;
+    }
+
+    .campaignNextPerk-amount {
+        font-family: "Benton Sans", "Helvetica", "sans-serif";
+        font-size: 24px;
+        line-height: 34px;
+        font-weight: bold;
+    }
+
+    .campaignNextPerk-label {
+        font-family: "Benton Sans Medium", "Helvetica", "sans-serif";
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: normal;
+        letter-spacing: 0;
+    }
+
+    @media (min-width: 1002px) {
+        .campaignNextPerk-label {
+            line-height: 22px;
+            font-family: "Benton Sans Medium", "Helvetica", "sans-serif";
+            font-size: 18px;
+            line-height: 28px;
+            font-weight: normal;
+            letter-spacing: 0;
+        }
+    }
+
+    .campaignNextPerk-description {
+        font-family: "Benton Sans", "Helvetica", "sans-serif";
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 18px;
+    }
+
+    @media (min-width: 1002px) {
+        .campaignNextPerk-description {
+            font-family: "Benton Sans", "Helvetica", "sans-serif";
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 20px;
+        }
+    }
+
+    .campaignNextPerk-description + .campaignNextPerk-availability {
+        margin-top: 10px;
+    }
+
+
+    .campaignNextPerk-availability {
+        color: #a8a8a8;
+        font-family: "Benton Sans Medium", "Helvetica", "sans-serif";
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: normal;
+        letter-spacing: 0;
+    }
+
+    @media not all and (min-width: 768px) {
+        .campaignNextPerk {
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+
+        .campaignNextPerk-descriptionWithMeta {
+            max-height: 8ex;
+            overflow: hidden;
+            position: relative;
+        }
+
+    }
+
+    .campaignNextPerk:hover {
+        border-color: #6a6a6a;
+        cursor: pointer;
+    }
+
+    }
+    </style>
+
+    <style type="text/css">/* Antenna Font Family Variations */
+    /* Benton Font Family Variations */
+    /** Perk Store mobile header text **/
+    /** Only mobile campaign/contributions **/
+    /* We can define top-left-dimple or left-top-dimple etc as necessary */
+    .campaignNavigation-items {
+        border-bottom: 1px solid #dddddd;
+    }
+
+    .campaignNavigation-items li {
+        display: inline-block;
+        text-transform: uppercase;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-family: "Benton Sans", "Helvetica", "sans-serif";
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 20px;
+    }
+
+    @media (min-width: 1280px) {
+        .campaignNavigation-items li {
+            font-family: "Benton Sans", "Helvetica", "sans-serif";
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 26px;
+            letter-spacing: 0;
+        }
+    }
+
+    .campaignNavigation-items li:not(:first-child) {
+        padding-left: 10px;
+    }
+
+    .campaignNavigation-item {
+        color: #a8a8a8;
+    }
+
+    .campaignNavigation-item:focus,
+    .campaignNavigation-item:hover,
+    .campaignNavigation-item--active {
+        color: #eb1478;
+        text-decoration: none;
+    }
+
+    .campaignNavigation-item--active {
+        font-weight: bold;
+    }
+
+    </style>
+    <style type="text/css">
+        @media (min-width: 1200px){
+
+        }
+
+        div {
+            display: block;
+        }
+        body {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #fff;
+        }
+        :after, :before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+        table {
+            background-color: transparent;
+            border-spacing: 0;
+            border-collapse: collapse;
+            display: table;
+
+        }
+        .table>caption+thead>tr:first-child>td, .table>caption+thead>tr:first-child>th, .table>colgroup+thead>tr:first-child>td, .table>colgroup+thead>tr:first-child>th, .table>thead:first-child>tr:first-child>td, .table>thead:first-child>tr:first-child>th {
+            border-top: 0;
+        }
+        .table-condensed>tbody>tr>td, .table-condensed>tbody>tr>th, .table-condensed>tfoot>tr>td, .table-condensed>tfoot>tr>th, .table-condensed>thead>tr>td, .table-condensed>thead>tr>th {
+            padding: 5px;
+        }
+        .table>thead>tr>th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #ddd;
+        }
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+            padding: 8px;
+            line-height: 1.42857143;
+            vertical-align: top;
+            border-top: 1px solid #ddd;
+        }
+        th {
+            text-align: left;
+        }
+    </style>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        $(document).ready(function () {
+                    var myChart = echarts.init(document.getElementById('echartsmain'));
+
+                    // 指定图表的配置项和数据
+                    var option = {
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: "{a} <br/>{b}: {c} ({d}%)"
+                        },
+                        legend: {
+                            orient: 'vertical',
+                            x: 'left',
+                            data: ['收入', '支出']
+                        },
+                        series: [
+                            {
+                                name: '收支情况',
+                                type: 'pie',
+                                radius: ['30%', '50%'],
+                                avoidLabelOverlap: false,
+                                label: {
+                                    normal: {
+                                        show: false,
+                                        position: 'center'
+                                    },
+                                    emphasis: {
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '30',
+                                            fontWeight: 'bold'
+                                        }
+                                    }
+                                },
+                                labelLine: {
+                                    normal: {
+                                        show: false
+                                    }
+                                },
+                                data: [
+                                    {value: 16300, name: '收入'},
+                                    {value: 0, name: '支出'}
+                                ]
+                            }
+                        ]
+                    };
+
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                    //读取json,生成表格
+            $.getJSON("data/aboutMoney.json", function (result) {
+                var length = result.length;
+                var total = 0;
+                for (var i = 0; i <= length; i++) {
+                    var num = document.getElementById('list').rows.length;
+                    var row =document.getElementById('list').insertRow(num);
+                    if (i < length) {
+                        if(result[i]["收支类型"]=="收入"){
+                            var cellNum=row.insertCell(0);
+                            var cellName = row.insertCell(1);   //取得自定义的表对象
+                            var cellMoney = row.insertCell(2);
+                            var cellLevel = row.insertCell(3);
+                            cellNum.innerHTML = i+1;
+                            cellName.innerHTML = result[i]["账目备注"];
+                            cellMoney.innerHTML = result[i]["账目金额"]+"¥";
+                            total += result[i]["账目金额"];
+                            switch (result[i]["账目金额"]) {
+                                case 200:
+                                    cellLevel.innerHTML = "铁杆";
+                                    break;
+                                case 500:
+                                    cellLevel.innerHTML = "特级";
+                                    break;
+                                case 1000:
+                                    cellLevel.innerHTML = "超级";
+                                    break;
+                            }}
+                        else if(result[i]["收支类型"]==""){
+
+                        }
+
+                    }
+                            else if (i == length) {
+
+                                var cellNum=row.insertCell(0);
+                                var cellName = row.insertCell(1);   //取得自定义的表对象
+                                var cellMoney = row.insertCell(2);
+                                var  cellLevel = row.insertCell(3);
+                                cellName.innerHTML = "合计";
+                                cellMoney.innerHTML = total+"¥";
+                            }
+                        }
+
+
+                    });
+                }
+
+        );
+
+    </script>
+</head>
+<body>
+<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand">F3Earth</a>
+        </div>
+        <nav id="bs-navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="productdoc.html" >项目方案</a>
+                </li>
+                <li>
+                    <a href="equity.html">股东权益</a>
+                </li>
+                <li>
+                    <a href="recruited.html" >项目招募</a>
+                </li>
+                <li>
+                    <a href="about.html" >关于我们</a>
+                </li>
+				 <li>
+                    <a href="Crowdfunding.html" >资金明细</a>
+                </li>
+				 <li>
+                    <a href="Blog.html" >大事件</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-1">
+
+        </div>
+        <div class="col-xs-5">
+            <div class="leftNavLayout-main">
+                    <div class="campaignPerks-title ng-binding ng-scope">
+                        <a class="campaignNavigation-item ng-binding campaignNavigation-item--active">
+                            Crowd-funding List
+                        </a>
+                    </div>
+
+
+                    <table class="table table-condensed" id="list">
+                        <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>nickName</th>
+                            <th>Money</th>
+                            <th>level</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+        </div>
+        <div class="col-xs-5">
+            <div class="campaignBody-finalSection">
+                <div class="campaignPerks ng-scope">
+                    <div class="campaignPerks-title ng-binding ng-scope">
+                        <a class="campaignNavigation-item ng-binding campaignNavigation-item--active">
+                            Perks
+                        </a>
+                    </div>
+
+                    </br>
+                    <div class="campaignNextPerk campaignNextPerk--unavailable">
+                        <div class="campaignNextPerk-body">
+                            <div class="campaignNextPerk-amountWithCurrency">
+                                <div class="campaignNextPerk-amount ng-binding">
+                                    超级
+                                </div>
+                            </div>
+                            <div class="campaignNextPerk-label ng-binding">Name on F3Earth thank you page</div>
+                            <div class="campaignNextPerk-descriptionWithMeta">
+                                <div class="campaignNextPerk-description ng-binding">Your name will appear in the web page that
+                                    thanks every contributor to F3Earth. So, you can contribute 200rmb.
+                                </div>
+                                <div class="campaignNextPerk-availability ng-binding">2 out of 300 claimed</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+                    <div class="campaignNextPerk campaignNextPerk--unavailable">
+                        <div class="campaignNextPerk-body">
+                            <div class="campaignNextPerk-amountWithCurrency">
+                                <div class="campaignNextPerk-amount ng-binding">
+                                    特级
+                                </div>
+                            </div>
+
+                            <div class="campaignNextPerk-label ng-binding">An F3Earth T-shirt</div>
+                            <div class="campaignNextPerk-descriptionWithMeta">
+                                <div class="campaignNextPerk-description ng-binding">This perk gets you a special edition
+                                    F3Earth T-shirt, only made for supporters. Maybe 500rmb.
+                                </div>
+                                <div class="campaignNextPerk-availability ng-binding">23 out of 40 claimed</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+                    <div class="campaignNextPerk campaignNextPerk--unavailable">
+                        <div class="campaignNextPerk-body">
+                            <div class="campaignNextPerk-amountWithCurrency">
+                                <div class="campaignNextPerk-amount ng-binding">
+                                    铁杆
+                                </div>
+                            </div>
+
+                            <div class="campaignNextPerk-label ng-binding">An hour with a core developer</div>
+                            <div class="campaignNextPerk-descriptionWithMeta">
+                                <div class="campaignNextPerk-description ng-binding">In addition to _all_ the perks above you
+                                    will also get an hour of dedicated time with one core developer of the F3Earth team, who
+                                    will buy your meal or beer while talking. You can bring all your F3Earth issues and
+                                    suggestions, or just hang out and geek out about web mapping. Yeah, 1000rmb.
+                                </div>
+                                <div class="campaignNextPerk-availability ng-binding">0 out of 4 claimed</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </br>
+                    <div id="echartsmain" style="height:400px;width:703px">
+
+                    </div>
+
+                    <!--<div class="campaignNextPerk campaignNextPerk--unavailable">
+                        <div class="campaignNextPerk-body" >
+                            <div id="echartsmain" class="campaignNextPerk-amountWithCurrency" style="height:200px;width:703px">
+                            </div>
+                        </div>
+                    </div>-->
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xs-1">
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+</body>
+</html>
