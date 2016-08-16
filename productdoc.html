@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>F3Erth 项目开发计划</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        F3Erth | 项目方案
+    </title>
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/patch.css" rel="stylesheet">
-
     <!-- Documentation extras -->
-
     <link href="css/docs.min.css" rel="stylesheet">
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/docs.min.js"></script>
+
+    
 </head>
 <body>
+
+<!-- Docs master nav -->
 <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="navbar-header" style="margin-left: 10%;">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -24,44 +32,49 @@
             </button>
             <a href="index.html" class="navbar-brand">F3Earth</a>
         </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
+        <nav id="bs-navbar" class="nav navbar-nav">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="productdoc.html" >项目方案</a>
+                    <a href="productdoc.html" style="color:#FFF;background:#6f5499;">项目方案</a>
+                </li>
+                <li>
+                    <a href="recruited.html">项目招募</a>
+                </li>
+                <li>
+                    <a href="Blog.html">大事件</a>
                 </li>
                 <li>
                     <a href="equity.html">股东权益</a>
                 </li>
-                <li>
-                    <a href="recruited.html" >项目招募</a>
+                 <li>
+                    <a href="Crowdfunding.html">支持者</a>
                 </li>
                 <li>
-                    <a href="about.html" >关于我们</a>
+                    <a href="demo.html">最新示例</a>
                 </li>
                 <li>
-                    <a href="Crowdfunding.html" >资金明细</a>
+                    <a href="sugges.html">意见建议</a>
                 </li>
                 <li>
-                    <a href="Blog.html" >大事件</a>
+                    <a href="about.html">关于我们</a>
                 </li>
             </ul>
         </nav>
     </div>
 </header>
-<div class="container" style="text-align: center">
-    <h2 class="bs-docs-featurette-title">WebGIS三维引擎 F3Erth开发计划</h2>
-</div>
+
+
 <div class="container" style="padding: 100px">
-    <h2>项目名称：</h2>
-    <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;F3Earth</p>
     <h2>愿景：</h2>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;1.	最终开源</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;2.	性能优先</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;3.	扩展性好</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;4.	快速迭代，持续开发</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;5.	达到商用要求</p>
+    <HR style="border-top:2px solid #6f5499" width="100%">
     <h2>运行环境：</h2>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;可运行在所有支持WebGL的浏览器上。</p>
+    <HR style="border-top:2px solid #6f5499" width="100%">
     <h2>一期功能需求：</h2>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;1.	真正的三维可视化界面</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;2.	支持背景设置</p>
@@ -75,6 +88,7 @@
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;10.界面风格可配置化</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;11.支持静态图加载</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;12.支持三维模型加载，支持.obj, .osgb, .dae格式，更多格式可扩展</p>
+    <HR style="border-top:2px solid #6f5499" width="100%">
     <h2>v1.0.0 发布版本需达到以下要求：</h2>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;1.	实现所有一期需求</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;2.	无致命和严重Bug</p>
@@ -83,6 +97,7 @@
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;5.	具备完善的文档和教程</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;6.	支持扩展及二次开发</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;7.	达到商用要求</p>
+    <HR style="border-top:2px solid #6f5499" width="100%">
     <h2>二期功能需求：</h2>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;1.	支持多屏对比</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;2.	支持骨骼动画，节点动画</p>
@@ -90,6 +105,14 @@
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;4.	支持直接加载倾斜摄影的三维数据</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;5.	支持类似于超图的二三维一体化</p>
     <p class="lead">&nbsp;&nbsp;&nbsp;&nbsp;6.	三维数据综合分析，空间分析等</p>
+    <HR style="border-top:2px solid #6f5499" width="100%">
     </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
 </body>
 </html>

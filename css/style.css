@@ -38,12 +38,12 @@
   background: #28a1c5 !important;
 }
 body {
-  color: #28272B;
+  color: #463265;
   background: #fff;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
 }
 body a {
-  color: #16a7cc;
+  color: #463265;
   font-weight: 500;
 }
 body a:hover {
@@ -750,12 +750,12 @@ pre[class*="language-"] .token.cdata {
 }
 /* TITLE PAGE STYLES */
 .title-page-header {
-  background: url('../../images/stardust.png');
+  background: url('../images/stardust.png');
   color: #f8f8f8;
 }
 .title-page-header .img {
   float: right;
-  background: url('../../images/globe.png');
+  background: url('../images/globe.png');
   height: 120px;
   width: 120px;
   background-size: contain;
