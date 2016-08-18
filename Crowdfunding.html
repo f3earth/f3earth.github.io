@@ -11,7 +11,9 @@
     <script src="js/echarts.common.min.js"></script>
     <script src="js/jquery-2.2.4.min.js"></script>
 
-    <title>F3Earth | 支持者</title>
+    <title>
+        F3Earth | 支持者
+    </title>
     <style type="text/css">
         /* Antenna Font Family Variations */
         /* Benton Font Family Variations */
@@ -344,7 +346,7 @@
 
 
     .campaignNextPerk-availability {
-        color: #a8a8a8;
+        color: #333;
         font-family: "Benton Sans Medium", "Helvetica", "sans-serif";
         font-size: 12px;
         line-height: 18px;
@@ -479,69 +481,29 @@
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         $(document).ready(function () {
-                    var myChart = echarts.init(document.getElementById('echartsmain'));
+            var myChart = echarts.init(document.getElementById('echartsmain'));
 
-                    // 指定图表的配置项和数据
-                    var option = {
-                        tooltip: {
-                            trigger: 'item',
-                            formatter: "{a} <br/>{b}: {c} ({d}%)"
-                        },
-                        legend: {
-                            orient: 'vertical',
-                            x: 'left',
-                            data: ['收入', '支出']
-                        },
-                        series: [
-                            {
-                                name: '收支情况',
-                                type: 'pie',
-                                radius: ['30%', '50%'],
-                                avoidLabelOverlap: false,
-                                label: {
-                                    normal: {
-                                        show: false,
-                                        position: 'center'
-                                    },
-                                    emphasis: {
-                                        show: true,
-                                        textStyle: {
-                                            fontSize: '30',
-                                            fontWeight: 'bold'
-                                        }
-                                    }
-                                },
-                                labelLine: {
-                                    normal: {
-                                        show: false
-                                    }
-                                },
-                                data: [
-                                    {value: 16300, name: '收入'},
-                                    {value: 0, name: '支出'}
-                                ]
-                            }
-                        ]
-                    };
+            var categories = [];  
+            var outvalues = [];  
+            var invalues = [];
 
-                    // 使用刚指定的配置项和数据显示图表。
-                    myChart.setOption(option);
-                    //读取json,生成表格
+            $.ajaxSettings.async = false; //同步请求
             $.getJSON("data/aboutMoney.json", function (result) {
                 var length = result.length;
                 var total = 0;
+
                 for (var i = 0; i <= length; i++) {
                     var num = document.getElementById('list').rows.length;
                     var row =document.getElementById('list').insertRow(num);
                     if (i < length) {
                         if(result[i]["收支类型"]=="收入"){
-                            var cellNum=row.insertCell(0);
-                            var cellName = row.insertCell(1);   //取得自定义的表对象
-                            var cellMoney = row.insertCell(2);
-                            var cellLevel = row.insertCell(3);
-                            cellNum.innerHTML = i+1;
+
+                            var cellName = row.insertCell(0);   //取得自定义的表对象
+                            //var cellMoney = row.insertCell(1);
+                            var cellLevel = row.insertCell(1);
+
                             cellName.innerHTML = result[i]["账目备注"];
-                            cellMoney.innerHTML = result[i]["账目金额"]+"¥";
+                            //cellMoney.innerHTML = result[i]["账目金额"]+"¥";
                             total += result[i]["账目金额"];
                             switch (result[i]["账目金额"]) {
                                 case 200:
@@ -553,35 +515,121 @@
                                 case 1000:
                                     cellLevel.innerHTML = "超级";
                                     break;
-                            }}
-                        else if(result[i]["收支类型"]==""){
-
-                        }
-
-                    }
-                            else if (i == length) {
-
-                                var cellNum=row.insertCell(0);
-                                var cellName = row.insertCell(1);   //取得自定义的表对象
-                                var cellMoney = row.insertCell(2);
-                                var  cellLevel = row.insertCell(3);
-                                cellName.innerHTML = "合计";
-                                cellMoney.innerHTML = total+"¥";
                             }
+                        } else if(result[i]["收支类型"]=="支出"){
+                            var object = {};
+                            var num = parseInt(result[i]["账目金额"]);
+                            if(num<0){
+                                num = -1 * num
+                            }
+                            object.value = num;
+                            object.name = result[i]["账目备注"];
+                            outvalues.push(object);
+                            categories.push(result[i]["账目备注"]);
                         }
 
-
-                    });
+                    } else if (i == length) {
+                        //var cellNum=row.insertCell(0);
+                        var cellName = row.insertCell(0);   //取得自定义的表对象
+                        //var cellMoney = row.insertCell(2);
+                        var  cellLevel = row.insertCell(1);
+                        cellName.innerHTML = "合计";
+                        cellLevel.innerHTML = total+"¥";
+                        var o = {};
+                        o.value = total;
+                        o.name = "收入";
+                        invalues.push(o);
+                        categories.push("收入");
+                    }
                 }
+            });
+            
+            // 指定图表的配置项和数据
+            var option = {
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    x: 'left',
+                    data: categories
+                },
+                series: [ 
+                    {
+                        name: '收入情况',
+                        type: 'pie',
+                        selectedMode: 'single',
+                        radius: ['30%', '50%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                            label: {
+                                normal: {
+                                    position: 'inner'
+                                }
+                            },
+                            normal: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        data: outvalues
+                    },
+                    {
+                        name: '收入情况',
+                        type: 'pie',
+                        radius: ['60%', '75%'],
+                        avoidLabelOverlap: false,
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'center'
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '30',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        data: invalues
+                    }
+                ]
+            };
 
-        );
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+            myChart.hideLoading();  
+            //读取json,生成表格
+
+            
+        });
 
     </script>
 </head>
 <body>
+<!-- Docs master nav -->
 <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="navbar-header" style="margin-left: 10%;">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -590,32 +638,39 @@
             </button>
             <a href="index.html" class="navbar-brand">F3Earth</a>
         </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
+        <nav id="bs-navbar" class="nav navbar-nav">
             <ul class="nav navbar-nav">
                 <li>
                     <a href="productdoc.html" >项目方案</a>
                 </li>
                 <li>
+                    <a href="recruited.html">项目招募</a>
+                </li>
+                <li>
+                    <a href="Blog.html">大事件</a>
+                </li>
+                <li>
                     <a href="equity.html">股东权益</a>
                 </li>
-                <li>
-                    <a href="recruited.html" >项目招募</a>
+                 <li>
+                    <a href="Crowdfunding.html" style="color:#FFF;background:#6f5499;">支持者</a>
                 </li>
                 <li>
-                    <a href="about.html" >关于我们</a>
+                    <a href="demo.html">最新示例</a>
                 </li>
-				 <li>
-                    <a href="Crowdfunding.html" >资金明细</a>
+                <li>
+                    <a href="sugges.html">意见建议</a>
                 </li>
-				 <li>
-                    <a href="Blog.html" >大事件</a>
+                <li>
+                    <a href="about.html">关于我们</a>
                 </li>
             </ul>
         </nav>
     </div>
 </header>
+
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="padding: 100px;">
         <div class="col-xs-1">
 
         </div>
@@ -623,7 +678,7 @@
             <div class="leftNavLayout-main">
                     <div class="campaignPerks-title ng-binding ng-scope">
                         <a class="campaignNavigation-item ng-binding campaignNavigation-item--active">
-                            Crowd-funding List
+                            众筹名单
                         </a>
                     </div>
 
@@ -631,21 +686,20 @@
                     <table class="table table-condensed" id="list">
                         <thead>
                         <tr>
-                            <th>No.</th>
-                            <th>nickName</th>
-                            <th>Money</th>
-                            <th>level</th>
+                            <th>昵称</th>
+                            <th>等级</th>
                         </tr>
                         </thead>
                     </table>
                 </div>
         </div>
+        
         <div class="col-xs-5">
             <div class="campaignBody-finalSection">
                 <div class="campaignPerks ng-scope">
                     <div class="campaignPerks-title ng-binding ng-scope">
                         <a class="campaignNavigation-item ng-binding campaignNavigation-item--active">
-                            Perks
+                            等级说明
                         </a>
                     </div>
 
@@ -657,79 +711,71 @@
                                     超级
                                 </div>
                             </div>
-                            <div class="campaignNextPerk-label ng-binding">Name on F3Earth thank you page</div>
+
+                            <div class="campaignNextPerk-label ng-binding">与开发者一小时交流时间</div>
                             <div class="campaignNextPerk-descriptionWithMeta">
-                                <div class="campaignNextPerk-description ng-binding">Your name will appear in the web page that
-                                    thanks every contributor to F3Earth. So, you can contribute 200rmb.
-                                </div>
-                                <div class="campaignNextPerk-availability ng-binding">2 out of 300 claimed</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    </br>
-                    <div class="campaignNextPerk campaignNextPerk--unavailable">
-                        <div class="campaignNextPerk-body">
-                            <div class="campaignNextPerk-amountWithCurrency">
-                                <div class="campaignNextPerk-amount ng-binding">
-                                    特级
-                                </div>
-                            </div>
-
-                            <div class="campaignNextPerk-label ng-binding">An F3Earth T-shirt</div>
-                            <div class="campaignNextPerk-descriptionWithMeta">
-                                <div class="campaignNextPerk-description ng-binding">This perk gets you a special edition
-                                    F3Earth T-shirt, only made for supporters. Maybe 500rmb.
-                                </div>
-                                <div class="campaignNextPerk-availability ng-binding">23 out of 40 claimed</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    </br>
-                    <div class="campaignNextPerk campaignNextPerk--unavailable">
-                        <div class="campaignNextPerk-body">
-                            <div class="campaignNextPerk-amountWithCurrency">
-                                <div class="campaignNextPerk-amount ng-binding">
-                                    铁杆
-                                </div>
-                            </div>
-
-                            <div class="campaignNextPerk-label ng-binding">An hour with a core developer</div>
-                            <div class="campaignNextPerk-descriptionWithMeta">
-                                <div class="campaignNextPerk-description ng-binding">In addition to _all_ the perks above you
-                                    will also get an hour of dedicated time with one core developer of the F3Earth team, who
-                                    will buy your meal or beer while talking. You can bring all your F3Earth issues and
-                                    suggestions, or just hang out and geek out about web mapping. Yeah, 1000rmb.
+                                <div class="campaignNextPerk-description ng-binding">
+                                    除了下面所述的权益外，超级权限的支持者拥有一个小时和开发团队核心人员单独交流1个小时的权益，同时可以指定一个功能，平台将为他定做这个功能，这个等级需要支持1000RMB
                                 </div>
                                 <div class="campaignNextPerk-availability ng-binding">0 out of 4 claimed</div>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        </br>
+                        <div class="campaignNextPerk campaignNextPerk--unavailable">
+                            <div class="campaignNextPerk-body">
+                                <div class="campaignNextPerk-amountWithCurrency">
+                                    <div class="campaignNextPerk-amount ng-binding">
+                                        特级
+                                    </div>
+                                </div>
+
+                                <div class="campaignNextPerk-label ng-binding">一件F3Earth的纪念T恤</div>
+                                <div class="campaignNextPerk-descriptionWithMeta">
+                                    <div class="campaignNextPerk-description ng-binding">
+                                        除了下述的权益外，特级支持者可以拥有F3Earth团队亲手设计的纪念T恤一件，这个等级需要支持500RMB.
+                                    </div>
+                                    <div class="campaignNextPerk-availability ng-binding">23 out of 40 claimed</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </br>
+                        <div class="campaignNextPerk campaignNextPerk--unavailable">
+                            <div class="campaignNextPerk-body">
+                                <div class="campaignNextPerk-amountWithCurrency">
+                                    <div class="campaignNextPerk-amount ng-binding">
+                                        铁杆
+                                    </div>
+                                </div>
+                                <div class="campaignNextPerk-label ng-binding">名字将出现在支持者页面上</div>
+                                <div class="campaignNextPerk-descriptionWithMeta">
+                                    <div class="campaignNextPerk-description ng-binding">
+                                        非常感谢您对F3Earth的支持，您的昵称将会在支持者名单内，这个等级需要支持200RMB.
+                                    </div>
+                                    <div class="campaignNextPerk-availability ng-binding">2 out of 300 claimed</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </br>
+                        <div class="campaignPerks-title ng-binding ng-scope">
+                            <a class="campaignNavigation-item ng-binding campaignNavigation-item--active">
+                                收支图表
+                            </a>
+                            </br>
+                            </br>
+                            </br>
+                            <div id="echartsmain" style="height:400px;width:703px">
+
                             </div>
                         </div>
                     </div>
-
-                    </br>
-                    <div id="echartsmain" style="height:400px;width:703px">
-
-                    </div>
-
-                    <!--<div class="campaignNextPerk campaignNextPerk--unavailable">
-                        <div class="campaignNextPerk-body" >
-                            <div id="echartsmain" class="campaignNextPerk-amountWithCurrency" style="height:200px;width:703px">
-                            </div>
-                        </div>
-                    </div>-->
                 </div>
-
             </div>
         </div>
-        <div class="col-xs-1">
-
-        </div>
     </div>
-
-
-
-
 </div>
 
 </body>
