@@ -1,26 +1,21 @@
 <!DOCTYPE html>
 <!-- saved from url=(0022)http://v3.bootcss.com/ -->
-<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>
-
         F3Earth
-
     </title>
-
+    <!-- favicon icon -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <link href="css/patch.css" rel="stylesheet">
-
     <!-- Documentation extras -->
-
     <link href="css/docs.min.css" rel="stylesheet">
-
     <!--[if lt IE 9]><script src="../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
 
@@ -30,41 +25,46 @@
     <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
 </head>
 <body class="bs-docs-home">
 
 <!-- Docs master nav -->
 <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
-    <div class="container">
-        <div class="navbar-header">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="navbar-header" style="margin-left: 10%;">
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#" class="navbar-brand">F3Earth</a>
+            <a href="index.html" class="navbar-brand">F3Earth</a>
         </div>
-        <nav id="bs-navbar" class="collapse navbar-collapse">
+        <nav id="bs-navbar" class="nav navbar-nav">
             <ul class="nav navbar-nav">
                 <li>
                     <a href="productdoc.html" >项目方案</a>
                 </li>
                 <li>
-                    <a href="equity.html">股东权益</a>
-                </li>
-                <li>
                     <a href="recruited.html" >项目招募</a>
                 </li>
                 <li>
-                    <a href="about.html" >关于我们</a>
-                </li>
-				 <li>
-                    <a href="Crowdfunding.html" >资金明细</a>
-                </li>
-				 <li>
                     <a href="Blog.html" >大事件</a>
+                </li>
+                <li>
+                    <a href="equity.html">股东权益</a>
+                </li>
+				 <li>
+                    <a href="Crowdfunding.html" >支持者</a>
+                </li>
+                <li>
+                    <a href="demo.html" >最新示例</a>
+                </li>
+                <li>
+                    <a href="sugges.html" >意见建议</a>
+                </li>
+				<li>
+                    <a href="about.html" >关于我们</a>
                 </li>
             </ul>
         </nav>
@@ -75,12 +75,15 @@
 <!-- Page content of course! -->
 <main class="bs-docs-masthead" id="content" role="main" tabindex="-1">
     <div class="container">
+        <img src="images/f3earth.jpg"></img>
+        <!--
         <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">F3</span>
+        -->
         <p class="lead">F3Earth 是基于原生WEBGL开发的三维GIS引擎，具有卓越的性能，支持多种数据源，可以应用在各个场景。</p>
         <p class="lead">
             <a href="#" class="btn btn-outline-inverse btn-lg" >下载 F3Earth</a>
         </p>
-        <p class="version">当前版本： v1.0.0</p>
+        <p class="version">当前版本： 待发布</p>
     </div>
 </main>
 
@@ -126,51 +129,47 @@
         <div class="row bs-docs-featured-sites">
 
             <div class="col-xs-6 col-sm-6">
-                <a href="#" target="_blank" title="Laravel中文网" onclick="_hmt.push([&#39;_trackEvent&#39;, &#39;doc-home-youzhan-img&#39;, &#39;click&#39;, &#39;Laravel中文网&#39;])">
-                    <img src="images/dem1.png" alt="Laravel中文网" class="img-responsive">
+                <a href="demo/sample.html" target="_blank" title="base demo">
+                    <img src="images/demo1.png" alt="base demo" class="img-responsive">
                 </a>
             </div>
 
             <div class="col-xs-6 col-sm-6">
-                <a href="#" target="_blank" title="Ghost中国" onclick="_hmt.push([&#39;_trackEvent&#39;, &#39;doc-home-youzhan-img&#39;, &#39;click&#39;, &#39;Ghost中国&#39;])">
-                    <img src="images/dem2.jpg" alt="Ghost中国" class="img-responsive">
+                <a href="demo/addVectorFill.html" target="_blank" title="vector">
+                    <img src="images/demo2.jpg" alt="vector" class="img-responsive">
                 </a>
             </div>
 
-            
+            <div class="col-xs-6 col-sm-6">
+                <a href="demo/controlSimple.html" target="_blank" title="control">
+                    <img src="images/demo3.png" alt="control" class="img-responsive">
+                </a>
+            </div>
+
+            <div class="col-xs-6 col-sm-6">
+                <a href="demo/overlaySample.html" target="_blank" title="overlayer">
+                    <img src="images/demo4.png" alt="overlayer" class="img-responsive">
+                </a>
+            </div>
 
         </div>
-
+        <!--占时隐藏优站精选，后期添加应用F3Earth的网站链接
         <hr class="half-rule">
 
         <p class="lead">我们在“优站精选”里展示了许多精美的 F3Earth 网站。</p>
         <a href="#" class="btn btn-outline btn-lg">逛一逛“优站精选”</a>
+        -->
     </div>
 </div>
 
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery-2.2.4.min.js"></script>
-
-
-<script src="js/bootstrap.min.js"></script>
-
-
-
-<script src="js/docs.min.js"></script>
-
-
-
-
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="js/ie10-viewport-bug-workaround.js"></script>
-
-
-
-<!-- Analytics
-================================================== -->
-
-
-</body></html>
+</body>
+</html>
