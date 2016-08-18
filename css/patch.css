@@ -17,3 +17,8 @@ body {
 .bs-callout *:last-child {
 	margin-bottom: 0;
 }
+
+.nav.navbar-nav .selected {
+    color:#FFF;
+    background:#6f5499;
+}
