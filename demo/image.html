@@ -2,7 +2,7 @@
 
 <head>
     <meta http-equiv="content-type" content="text/html" charset="utf-8" />
-    <title>Simple F3Earth</title>
+    <title>F3Earth - Static Image Example </title>
     <script type="text/javascript" src="../dist/fe.js" charset="utf-8"></script>
     <style>
         body {
@@ -22,11 +22,12 @@
         earth.addLayer({
             id: 'osm',
             source: {
-                id: 'osm',
-                type: 'rasterTile',
-                url: 'http://a.tile.openstreetmap.org/{z}/{x}/{y}.png'
+                id: 'image',
+                type: 'image',
+                extent: [-180, -85, 180, 85],
+                url: './images/earth.jpg'
             },
-            type: 'rasterTile'
+            type: 'image'
         });
         var doubleClickZoomInteraction=new FE.Interaction.DoubleClickZoom();
         earth.addInteraction(doubleClickZoomInteraction);
